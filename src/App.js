@@ -1,23 +1,47 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import AuthProvider from "./contexts/AuthProvider";
+import Login from './components/Login/Login';
+import Registration from './components/Registration/Registration';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import Dashboard from './components/DashBoard/Dashboard';
+import AddStation from './components/DashBoard/AddStation/AddStation';
+import ManageStation from './components/DashBoard/ManageStation/ManageStation';
+import Header from './components/DashBoard/Header';
+import StationUpdate from './components/DashBoard/ManageStation/StationUpdate';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     <AuthProvider>
+        <Router >
+          <Header></Header>
+          <Switch>
+            <Route exact path="/">
+              <Login></Login>
+            </Route>
+            <Route exact path="/login">
+              <Login></Login>
+            </Route>
+            <Route exact path="/registration">
+              <Registration></Registration>
+            </Route>
+            <PrivateRoute exact path="/home">
+              <Dashboard></Dashboard>
+            </PrivateRoute>
+            <PrivateRoute exact path="/addstation">
+              <AddStation></AddStation>
+            </PrivateRoute>
+            <PrivateRoute exact path="/managestation">
+              <ManageStation></ManageStation>
+            </PrivateRoute>
+            <PrivateRoute exact path="/managestation/:id">
+              <StationUpdate></StationUpdate>
+            </PrivateRoute> 
+            
+          </Switch>
+        </Router>
+      </AuthProvider>
     </div>
   );
 }
