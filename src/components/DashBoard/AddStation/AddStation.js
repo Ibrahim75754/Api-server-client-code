@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import Header from '../Header';
 import swal from 'sweetalert';
 
 const AddStation = () => {
@@ -8,7 +9,7 @@ const AddStation = () => {
     const onSubmit = data => {
         // console.log(data);
         // use AXIOS for post into data base
-        axios.post('http://localhost:5000/stations', data)
+        axios.post('https://agile-headland-68765.herokuapp.com/stations', data)
             .then(res => {
                 // //console.log(res);
                 if (res.data.insertedId) {
@@ -19,6 +20,7 @@ const AddStation = () => {
     };
     return (
         <div>
+            <Header></Header>
             <div className="container py-5">
                 <h1 className="text-center mb-5">Add a New Station</h1>
                 <div>

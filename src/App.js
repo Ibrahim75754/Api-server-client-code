@@ -7,7 +7,6 @@ import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import Dashboard from './components/DashBoard/Dashboard';
 import AddStation from './components/DashBoard/AddStation/AddStation';
 import ManageStation from './components/DashBoard/ManageStation/ManageStation';
-import Header from './components/DashBoard/Header';
 import StationUpdate from './components/DashBoard/ManageStation/StationUpdate';
 
 function App() {
@@ -15,7 +14,6 @@ function App() {
     <div className="App">
      <AuthProvider>
         <Router >
-          <Header></Header>
           <Switch>
             <Route exact path="/">
               <Login></Login>

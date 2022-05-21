@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import swal from 'sweetalert';
+import Header from '../Header';
 
 
 const StationUpdate = () => {
@@ -8,7 +9,7 @@ const StationUpdate = () => {
     const [station, setStation] = useState();
     
     useEffect(() => {
-        fetch(`http://localhost:5000/stations/${id}`)
+        fetch(`https://agile-headland-68765.herokuapp.com/stations/${id}`)
             .then(res => res.json())
             .then(data =>
                 setStation(data));
@@ -36,7 +37,7 @@ const StationUpdate = () => {
 
     // console.log(formData);
     const handleUpdate = e => {
-        fetch(`http://localhost:5000/stations/update/${id}`, {
+        fetch(`https://agile-headland-68765.herokuapp.com/stations/update/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -54,6 +55,7 @@ const StationUpdate = () => {
     }
     return (
         <div>
+            <Header></Header>
             <h1 className='my-5'>Update Station</h1>
             <div>
             <form onSubmit={handleUpdate} className="d-flex flex-column justify-content-center align-items-center">

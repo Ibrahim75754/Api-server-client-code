@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import swal from 'sweetalert';
+import Header from '../Header';
 
 const ManageStation = () => {
     const [stations, setStations] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/stations')
+        fetch('https://agile-headland-68765.herokuapp.com/stations')
             .then(res => res.json())
             .then(data => setStations(data));
     }, []);
@@ -21,7 +22,7 @@ const ManageStation = () => {
           })
           .then((willDelete) => {
             if (willDelete) {
-                fetch(`http://localhost:5000/stations/${id}`, {
+                fetch(`https://agile-headland-68765.herokuapp.com/stations/${id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
@@ -45,6 +46,7 @@ const ManageStation = () => {
     }
     return (
         <div>
+            <Header></Header>
             <h1>Manage All Station</h1>
             <div className="table-responsive">
                 <table className="table table-hover text-center">
